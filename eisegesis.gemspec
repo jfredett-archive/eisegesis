@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Eisegesis::VERSION
   gem.authors       = ["Joe Fredette"]
   gem.email         = ["jfredett@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{A tool for building projects. It doesn't suck.}
+  gem.summary       = %q{A tool for building projects. It doesn't suck.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
