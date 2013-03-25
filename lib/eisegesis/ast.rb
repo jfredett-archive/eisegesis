@@ -1,7 +1,6 @@
 module Eisegesis::AST ; end
 
-require 'eisegesis/ast/object_set'
-require 'eisegesis/ast/node'
+require 'katuv'
 
 require 'eisegesis/ast/bin'
 require 'eisegesis/ast/src'

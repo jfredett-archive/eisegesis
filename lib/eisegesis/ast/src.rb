@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Src
-      include Node
+      include Katuv::Node
       terminal!
     end
   end

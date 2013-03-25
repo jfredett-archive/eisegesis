@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Project
-      include Node
+      include Katuv::Node
 
       nonterminal Structure
       nonterminal Products

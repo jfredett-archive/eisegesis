@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Compiler
-      include Node
+      include Katuv::Node
       terminal!
     end
   end

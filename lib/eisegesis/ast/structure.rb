@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Structure
-      include Node
+      include Katuv::Node
 
       terminal Src
       terminal Obj

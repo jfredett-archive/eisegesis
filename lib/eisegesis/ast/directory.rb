@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Directory
-      include Node
+      include Katuv::Node
 
       nonterminal Directory
       multiple SourceFile

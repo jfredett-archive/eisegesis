@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Dependencies
-      include Node
+      include Katuv::Node
 
       multiple Compiler
       multiple Package

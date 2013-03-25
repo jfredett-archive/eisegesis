@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Lib
-      include Node
+      include Katuv::Node
       terminal!
 
       terminal Deps

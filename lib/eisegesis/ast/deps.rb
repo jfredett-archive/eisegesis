@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Deps
-      include Node
+      include Katuv::Node
       terminal!
 
       def self.name

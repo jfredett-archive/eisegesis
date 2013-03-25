@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class SourceFile
-      include Node
+      include Katuv::Node
       terminal!
 
       def self.name

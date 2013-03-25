@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Products
-      include Node
+      include Katuv::Node
 
       nonterminal Binary
       nonterminal Lib

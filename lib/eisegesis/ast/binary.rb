@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class Binary
-      include Node
+      include Katuv::Node
       terminal!
 
       terminal Deps

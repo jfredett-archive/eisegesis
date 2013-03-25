@@ -1,7 +1,7 @@
 module Eisegesis
   module AST
     class License
-      include Node
+      include Katuv::Node
       terminal!
     end
   end
