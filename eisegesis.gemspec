@@ -12,6 +12,9 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{A tool for building projects. It doesn't suck.}
   gem.homepage      = ""
 
+  gem.add_dependency 'katuv'
+  gem.add_dependency 'exegesis'
+
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
