@@ -5,6 +5,10 @@ gem 'rspec'
 gem 'rspec-spies'
 gem 'pry'
 
+gem 'flay'
+gem 'flog'
+gem 'mutant'
+
 # Specify your gem's dependencies in eisegesis.gemspec
 gemspec
 
