@@ -1,4 +1,4 @@
-require 'exegesis'
+require 'eisegesis'
 
 project 'fake' do
   structure do
