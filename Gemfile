@@ -13,5 +13,4 @@ gem 'mutant'
 # Specify your gem's dependencies in eisegesis.gemspec
 gemspec
 
-gem 'exegesis', :path => '../exegesis'
-gem 'katuv', :path => '../katuv'
+gem 'exegesis', :git => 'git@github.com:jfredett/exegesis.git'
