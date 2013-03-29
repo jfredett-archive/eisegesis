@@ -1,4 +1,4 @@
-# Eisegesis [![Gem Version](https://badge.fury.io/rb/eisegesis.png)](http://badge.fury.io/rb/eisegesis) [![Build Status](https://travis-ci.org/jfredett/eisegesis.png?branch=master)](http://travis-ci.org/jfredett/eisegesis) [![Code Climate](https://codeclimate.com/github/jfredett/eisegesis.png)](https://codeclimate.com/github/jfredett/eisegesis)
+# Eisegesis [![Gem Version](https://badge.fury.io/rb/eisegesis.png)](http://badge.fury.io/rb/eisegesis) [![Build Status](https://travis-ci.org/jfredett/eisegesis.png?branch=master)](http://travis-ci.org/jfredett/eisegesis) [![Code Climate](https://codeclimate.com/github/jfredett/eisegesis.png)](https://codeclimate.com/github/jfredett/eisegesis) [![Coverage Status](https://coveralls.io/repos/jfredett/eisegesis/badge.png?branch=master)](https://coveralls.io/r/jfredett/eisegesis)
 
 Eisegesis is a tool for specifying a project structure, and how to compile it,
 and just friggin' build it.
