@@ -21,19 +21,14 @@ module Eisegesis
     def config
       # read the file, build the project AST from it.
       @config ||= eval base_directory.find_file('exegesis').content
+      puts @config.visit(PrettyPrinter.new)
     end
 
-    def src_dir
-      return @src_dir if @src_dir
-      node = grab(AST::Src)
-      @src_dir = base_directory.find_directory(node.name)
+    def structure
+      return @structure if @structure
+      @structure ||= Structure.new grab(AST::Structure)
     end
 
-    def bin_dir
-      return @bin_dir if @bin_dir
-      node = grab(AST::Bin)
-      @bin_dir = base_directory.find_directory(node.name)
-    end
 
     def validate!
       @validation ||= AST::Validator.new.tap do |validator|
@@ -63,23 +58,60 @@ module Eisegesis
     end
   end
 
+  class PrettyPrinter < Eisegesis::AST::Visitor
+    def initialize
+      @depth = -1
+    end
+
+    def before(*_)
+      @depth += 1
+    end
+
+    def after(*_)
+      @depth -= 1
+    end
+
+    def unknown(node)
+      puts ("  "*@depth) + node.inspect
+    end
+  end
+
   class Structure
-    def src
+    def initialize(base_dir, node)
+      @base_dir = base_dir
+      @node = node
     end
 
-    def obj
+    def self.named_dir(name, klass)
+      define_method(name) do
+        ivar = instance_variable_get(name)
+        return ivar unless ivar.nil?
+
+        node = grab(klass)
+        instance_variable_set(name, ivar = base_directory.find_directory(node.name))
+        ivar
+      end
     end
 
-    def test
+    def self.named_file(name, klass)
+      define_method(name) do
+        ivar = instance_variable_get(name)
+        return ivar unless ivar.nil?
+
+        node = grab(klass)
+        instance_variable_set(name, ivar = base_directory.find_file(node.name))
+        ivar
+      end
     end
 
-    def bin
-    end
+    named_dir :src, AST::Src
+    named_dir :bin, AST::Bin
+    named_dir :obj, AST::Obj
+    named_dir :test, AST::Test
 
-    def license
-    end
+    named_file :license, AST::License
 
-    def substructures
+    def directories
     end
   end
 end

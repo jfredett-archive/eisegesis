@@ -2,7 +2,6 @@ shared_examples_for 'an ast node' do
   describe 'AST Node API' do
     it { should respond_to :visit    }
     it { should respond_to :children }
-    it { should respond_to :run      }
     it { should respond_to :each     }
 
     its(:class) { should respond_to :terminal    }
