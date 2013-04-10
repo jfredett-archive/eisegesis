@@ -12,5 +12,3 @@ gem 'mutant'
 
 # Specify your gem's dependencies in eisegesis.gemspec
 gemspec
-
-gem 'exegesis', :git => 'git@github.com:jfredett/exegesis.git'
