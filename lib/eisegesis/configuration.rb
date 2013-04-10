@@ -54,7 +54,8 @@ module Eisegesis
     end
 
     def unknown(node)
-      @result ||= node if node.is_a? @klass
+      @result = node     if node.is_a? @klass
+      continue_with node if @result.nil?
     end
   end
 
@@ -73,6 +74,7 @@ module Eisegesis
 
     def unknown(node)
       puts ("  "*@depth) + node.inspect
+      continue_with node
     end
   end
 

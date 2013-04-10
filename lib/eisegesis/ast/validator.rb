@@ -7,6 +7,10 @@ module Eisegesis
         @errors = Errors.new
       end
 
+      def after(node)
+        continue_with node
+      end
+
       def project(node)
         error(:project, "must provide a name") unless node.name
       end
