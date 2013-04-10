@@ -7,16 +7,31 @@ describe Eisegesis::Configuration do
   subject(:configuration) { Eisegesis::Configuration.new(project_directory) }
   it { should be_valid } #validations on the 'AST'
 
-  describe 'src_dir' do
-    subject { configuration.src_dir }
+  describe '#structure'
+    let(:structure) { configuration.structure }
 
-    its(:path) { should == './spec/fake_project/src' }
-  end
+    describe '#src' do
+      subject { structure.src }
 
-  describe 'bin_dir' do
-    subject { configuration.bin_dir }
+      its(:path) { should == './spec/fake_project/src' }
+    end
 
-    its(:path) { should == './spec/fake_project/bin' }
-  end
+    describe '#bin' do
+      subject { structure.bin }
+
+      its(:path) { should == './spec/fake_project/bin' }
+    end
+
+    describe '#obj' do
+      subject { structure.obj }
+
+      its(:path) { should == './spec/fake_project/obj' }
+    end
+
+    describe '#test' do
+      subject { structure.test }
+
+      its(:path) { should == './spec/fake_project/test' }
+    end
 end
 

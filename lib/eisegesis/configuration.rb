@@ -21,14 +21,12 @@ module Eisegesis
     def config
       # read the file, build the project AST from it.
       @config ||= eval base_directory.find_file('exegesis').content
-      puts @config.visit(PrettyPrinter.new)
     end
 
     def structure
       return @structure if @structure
-      @structure ||= Structure.new grab(AST::Structure)
+      @structure ||= Structure.new base_directory, grab(AST::Structure)
     end
-
 
     def validate!
       @validation ||= AST::Validator.new.tap do |validator|
@@ -79,41 +77,38 @@ module Eisegesis
   end
 
   class Structure
+    extend Forwardable
+
     def initialize(base_dir, node)
       @base_dir = base_dir
       @node = node
     end
+    attr_reader :node, :base_dir
 
     def self.named_dir(name, klass)
       define_method(name) do
-        ivar = instance_variable_get(name)
+        ivar = instance_variable_get(as_ivar name)
         return ivar unless ivar.nil?
 
         node = grab(klass)
-        instance_variable_set(name, ivar = base_directory.find_directory(node.name))
+        instance_variable_set(as_ivar(name), ivar = base_dir.find_directory(node.name))
         ivar
       end
     end
 
-    def self.named_file(name, klass)
-      define_method(name) do
-        ivar = instance_variable_get(name)
-        return ivar unless ivar.nil?
+    def as_ivar(name)
+      "@#{name}"
+    end
 
-        node = grab(klass)
-        instance_variable_set(name, ivar = base_directory.find_file(node.name))
-        ivar
-      end
+    delegate :visit => :node
+    def grab(klass)
+      visit(grab = NodeGrabber.new(klass))
+      grab.result
     end
 
     named_dir :src, AST::Src
     named_dir :bin, AST::Bin
     named_dir :obj, AST::Obj
     named_dir :test, AST::Test
-
-    named_file :license, AST::License
-
-    def directories
-    end
   end
 end
