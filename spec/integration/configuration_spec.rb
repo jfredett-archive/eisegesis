@@ -2,7 +2,9 @@ require 'integration_spec_helper'
 
 # TODO: Promote this into an integration spec, just test API level stuff here.
 describe Eisegesis::Configuration do
-  let(:project_directory) { Exegesis::BaseDirectory.new('./spec/fake_project') }
+
+  let(:project_path) { File.expand_path(File.join('..', '..', 'fake_project'), __FILE__) }
+  let(:project_directory) { Exegesis::BaseDirectory.create(project_path) }
 
   subject(:configuration) { Eisegesis::Configuration.new(project_directory) }
   it { should be_valid } #validations on the 'AST'
@@ -13,25 +15,25 @@ describe Eisegesis::Configuration do
     describe '#src' do
       subject { structure.src }
 
-      its(:path) { should == './spec/fake_project/src' }
+      its(:path) { should == File.join(project_path, 'src') }
     end
 
     describe '#bin' do
       subject { structure.bin }
 
-      its(:path) { should == './spec/fake_project/bin' }
+      its(:path) { should == File.join(project_path, 'bin') }
     end
 
     describe '#obj' do
       subject { structure.obj }
 
-      its(:path) { should == './spec/fake_project/obj' }
+      its(:path) { should == File.join(project_path, 'obj') }
     end
 
     describe '#test' do
       subject { structure.test }
 
-      its(:path) { should == './spec/fake_project/test' }
+      its(:path) { should == File.join(project_path, 'test') }
     end
 end
 
