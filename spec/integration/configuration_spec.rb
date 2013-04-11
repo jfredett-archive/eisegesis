@@ -6,6 +6,8 @@ describe Eisegesis::Configuration do
     puts "DEBUG -- TRAVIS"
     puts "__FILE__ #{__FILE__}"
     puts "project_path: #{project_path}"
+    puts "project_path exists? #{File.directory? project_path}"
+    puts "content of project_path: #{`ls #{project_path}`}"
   end
 
   let(:project_path) { File.expand_path(File.join('..', '..', 'fake_project'), __FILE__) }
