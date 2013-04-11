@@ -9,6 +9,8 @@ describe Eisegesis::Configuration do
     puts "project_path exists? #{File.directory? project_path}"
     puts "content of project_path: #{`ls #{project_path}`}"
     puts "content of path via Dir: #{Dir[File.join(project_path, '*')]}"
+    puts "content via Exegesis: #{project_directory.content}"
+    puts "config value: #{configuration.config}"
   end
 
   let(:project_path) { File.expand_path(File.join('..', '..', 'fake_project'), __FILE__) }
