@@ -2,6 +2,11 @@ require 'integration_spec_helper'
 
 # TODO: Promote this into an integration spec, just test API level stuff here.
 describe Eisegesis::Configuration do
+  before do
+    puts "DEBUG -- TRAVIS"
+    puts "__FILE__ #{__FILE__}"
+    puts "project_path: #{project_path}"
+  end
 
   let(:project_path) { File.expand_path(File.join('..', '..', 'fake_project'), __FILE__) }
   let(:project_directory) { Exegesis::BaseDirectory.create(project_path) }
