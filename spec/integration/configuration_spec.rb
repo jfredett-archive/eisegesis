@@ -13,6 +13,7 @@ describe Eisegesis::Configuration do
     #puts "content via Exegesis: #{project_directory.find_file('exegesis').content}"
     puts "config value: #{configuration.config}"
     puts "structure value: #{configuration.config.structure}"
+    puts "structure value: #{configuration.config.src}"
   end
 
   let(:project_path) { File.expand_path(File.join('..', '..', 'fake_project'), __FILE__) }
